@@ -1,0 +1,406 @@
+@import '../styles/SuccessMetrics.css';
+
+.success-story-page--my .ph__title,
+.success-story-page--my .ph__lede {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+/* Match Services page Myanmar hero title scale */
+.success-story-page--my .ph__title {
+  letter-spacing: 0;
+  line-height: 1.12;
+  font-size: clamp(26px, 3.4vw, 42px);
+}
+
+.success-story-page--my .ph__title em {
+  font-family: inherit;
+}
+
+.section.featured-section {
+  padding: 22px 0 24px;
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.featured__media {
+  position: relative;
+  aspect-ratio: 1.16 / 1;
+  overflow: hidden;
+  background: var(--paper-tint);
+}
+.featured__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92);
+  transition: opacity 0.35s ease;
+}
+
+.featured__media::before,
+.featured__media::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255,255,255,0.85);
+  z-index: 2;
+  pointer-events: none;
+}
+.featured__media::before {
+  top: 16px; left: 16px;
+  border-right: none; border-bottom: none;
+}
+.featured__media::after {
+  bottom: 16px; right: 16px;
+  border-left: none; border-top: none;
+}
+
+.featured__year {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.94);
+  color: var(--cobalt-900);
+  padding: 6px 10px;
+  border: 1px solid var(--cobalt-300);
+  border-radius: 0;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.featured__controls {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.featured__control-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,0.9);
+  background: rgba(13, 33, 81, 0.62);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.featured__control-btn:hover {
+  background: rgba(13, 33, 81, 0.84);
+  transform: translateY(-1px);
+}
+
+.featured__dots {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.featured__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  padding: 0;
+}
+
+.featured__dot.is-active {
+  background: rgba(255,255,255,1);
+}
+
+.featured__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.featured__title {
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.04;
+  color: var(--cobalt-950);
+  margin-top: 0;
+}
+
+.featured__title em {
+  color: var(--cobalt-600);
+}
+
+.featured__desc {
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--ink-500);
+}
+
+@media (max-width: 920px) {
+  .section.featured-section {
+    padding: 26px 0 29px;
+  }
+
+  .featured {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+}
+
+/* ----- Testimonial ticker ----- */
+/* Single column so the heading uses full container width (was ~59% in 2-col grid) */
+.section__head--testimonials-only,
+.section__head--single-col {
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+.testimonials__title {
+  font-size: clamp(22px, 2.65vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  max-width: 100%;
+}
+
+/* Keep “What Students & Parents Say” on one line when there’s room */
+@media (min-width: 480px) {
+  .testimonials__title {
+    white-space: nowrap;
+  }
+}
+
+/* Horizontal scroll + 4s auto-advance one card (paused while user scrolls; respects prefers-reduced-motion) */
+.testimonial-carousel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding-inline: 18px;
+  margin-top: 40px;
+}
+
+.testimonial-carousel__nav {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--cobalt-900);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s var(--ease-out);
+}
+
+.testimonial-carousel__nav:hover {
+  background: var(--cobalt-900);
+  color: var(--paper);
+  border-color: var(--cobalt-900);
+}
+
+.testimonial-ticker {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  -webkit-overflow-scrolling: touch;
+  padding-inline: 0;
+  padding-top: 8px;
+  padding-bottom: 14px;
+  margin-top: 0;
+  scrollbar-width: none;
+}
+
+.testimonial-ticker::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .testimonial-carousel {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .testimonial-carousel__nav {
+    display: none;
+  }
+}
+
+.testimonial-ticker__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.testimonial-ticker .testimonial-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.testimonial-card {
+  width: min(340px, 82vw);
+  min-height: 170px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.testimonial-card__quote {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--cobalt-900);
+  letter-spacing: -0.01em;
+  margin: 0;
+  margin-bottom: auto;
+}
+
+.testimonial-card__quote--my {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-family: "Noto Sans Myanmar", var(--sans);
+}
+
+.testimonial-card__meta {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.testimonial-card__name {
+  font-size: 14px;
+  color: var(--cobalt-900);
+}
+
+.testimonial-card__school {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+/* ----- Stories list ----- */
+.stories {
+  list-style: none;
+  border-top: 1px solid var(--line-strong);
+}
+.story {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 220px 1fr 1.3fr 60px;
+  gap: 28px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+  transition: background 0.4s var(--ease-out);
+}
+.story:hover { background: var(--azure-50); }
+.story:hover .story__num { color: var(--cobalt-700); }
+
+.story__num {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cobalt-400);
+  letter-spacing: 0.12em;
+  transition: color 0.3s var(--ease-out);
+}
+
+.story__name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.story__name strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 24px;
+  color: var(--cobalt-900);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.story__name span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-500);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.story__school {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cobalt-900);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.story__school em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story__blurb {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-500);
+}
+
+.story__arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cobalt-900);
+  justify-self: end;
+  transition: all 0.3s var(--ease-out);
+}
+.story__arrow:hover {
+  background: var(--cobalt-900);
+  color: var(--paper);
+  border-color: var(--cobalt-900);
+}
+
+@media (max-width: 920px) {
+  .story {
+    grid-template-columns: 60px 1fr 40px;
+    grid-template-rows: auto auto auto;
+    gap: 8px 16px;
+  }
+  .story__num { grid-row: 1 / span 3; }
+  .story__name, .story__school, .story__blurb { grid-column: 2; }
+  .story__arrow { grid-row: 1; grid-column: 3; }
+}

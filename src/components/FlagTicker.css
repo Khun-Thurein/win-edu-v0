@@ -1,0 +1,179 @@
+/* ===== Shared base ===== */
+.ticker {
+  position: relative;
+  width: 100%;
+}
+
+.ticker__name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+  color: var(--ink-900);
+  white-space: nowrap;
+}
+
+/* ===== Countries variant — two-line marquee strip ===== */
+.ticker--countries {
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--paper);
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.ticker--countries .ticker__marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ticker--countries .ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.ticker--countries .ticker__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 30px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  cursor: default;
+  position: relative;
+}
+
+.ticker--countries .ticker__name {
+  font-style: normal;
+}
+
+.ticker--countries .ticker__item:not(:last-child)::after {
+  content: '•';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-300);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.ticker--countries .ticker__item:hover {
+  opacity: 1;
+}
+
+.ticker__flag--svg {
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(5, 13, 34, 0.1);
+}
+
+.ticker--countries-double {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ticker--countries-double .ticker__marquee--secondary .ticker__item {
+  opacity: 1;
+}
+
+/* ===== Schools variant — slow marquee ===== */
+.ticker--schools {
+  overflow: hidden;
+  padding: 14px 0;
+  clip-path: inset(0 48px);
+}
+
+.ticker--schools .ticker__marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ticker--schools .ticker__track {
+  display: flex;
+  width: max-content;
+  gap: 64px;
+  will-change: transform;
+}
+
+.ticker--schools .ticker__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding: 6px 0;
+  opacity: 1;
+}
+
+.ticker__school-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ticker__school-logo--image {
+  object-fit: contain;
+  padding: 2px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.ticker__school-logo--large {
+  width: 220px;
+  height: 74px;
+  border: 0;
+  padding: 6px 10px;
+  background: transparent;
+}
+
+.ticker--schools .ticker__name {
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 350;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+}
+
+.ticker--schools-double {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ticker--schools-double .ticker__marquee--secondary .ticker__item {
+  opacity: 1;
+}
+
+/* ===== Responsiveness ===== */
+@media (max-width: 720px) {
+  .ticker--countries {
+    padding: 8px 0;
+  }
+
+  .ticker--countries .ticker__item {
+    padding: 8px 20px;
+  }
+
+  .ticker__name {
+    font-size: 18px;
+  }
+}

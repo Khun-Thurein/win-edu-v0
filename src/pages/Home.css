@@ -1,0 +1,83 @@
+@import '../styles/SuccessMetrics.css';
+
+/* Home page — section primitives now live in index.css */
+
+.home-field-notes__head {
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+/* Optional: page-specific tweaks for the home network band */
+.home__network {
+  position: relative;
+}
+
+.home__network::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+}
+
+.quote__inner--split {
+  max-width: none;
+  width: 100%;
+  display: block;
+  text-align: initial;
+}
+
+.quote__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'media copy';
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  width: 100%;
+}
+
+.quote__inner--split .quote__copy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  text-align: left;
+  min-width: 0;
+}
+
+.quote__inner--split .quote__title,
+.quote__inner--split .quote__body,
+.quote__inner--split .quote__attribution {
+  text-align: left;
+}
+
+.quote__inner--split .quote__body {
+  max-width: none;
+}
+
+.quote__inner--split .quote__body--my {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+  line-height: 1.65;
+}
+
+.quote__cta--my {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+.quote__media {
+  grid-area: media;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .quote__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'copy'
+      'media';
+    gap: clamp(24px, 5vw, 40px);
+    align-items: stretch;
+  }
+}

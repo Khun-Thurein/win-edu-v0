@@ -1,0 +1,107 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq__row {
+  border-top: 1px solid var(--line);
+  position: relative;
+  transition: background 0.4s var(--ease-out);
+}
+
+.faq__row::before {
+  content: counter(faq-counter, decimal-leading-zero);
+  counter-increment: faq-counter;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--cobalt-400);
+}
+
+.faq {
+  counter-reset: faq-counter;
+}
+
+.faq__row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__row--open {
+  background: var(--azure-50);
+}
+
+.faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 24px 6px 24px 38px;
+  text-align: left;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: var(--cobalt-900);
+  font-variation-settings: "opsz" 144;
+  transition: color 0.25s var(--ease-out);
+}
+
+.faq__q:hover { color: var(--cobalt-600); }
+
+.faq__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cobalt-900);
+  transition: all 0.4s var(--ease-out);
+}
+
+.faq__row--open .faq__icon {
+  background: var(--cobalt-900);
+  color: var(--paper);
+  border-color: var(--cobalt-900);
+  transform: rotate(45deg);
+}
+
+.faq__a-wrap {
+  overflow: hidden;
+}
+
+.faq__a {
+  padding: 0 6px 26px 38px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-500);
+  max-width: 720px;
+}
+
+.faq__q--my {
+  font-style: normal;
+  font-size: 17px;
+  line-height: 1.45;
+  letter-spacing: 0;
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+.faq__a--my {
+  font-size: 14.5px;
+  line-height: 1.75;
+  letter-spacing: 0;
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+@media (max-width: 720px) {
+  .faq__row::before { top: 22px; font-size: 9px; }
+  .faq__q { font-size: 19px; padding: 19px 6px 19px 30px; }
+  .faq__a { padding: 0 6px 19px 30px; }
+}

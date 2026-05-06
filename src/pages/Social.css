@@ -1,0 +1,740 @@
+/* Myanmar title: Services-scale, full row width — single line string (no <br /> in JSX) */
+.social-page--my .ph__title {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+  letter-spacing: 0;
+  line-height: 1.12;
+  font-size: clamp(26px, 3.4vw, 42px);
+  max-width: none;
+  width: 100%;
+}
+
+.social-page--my .ph__title em {
+  font-family: inherit;
+}
+
+.social-page--my .ph__lede {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+  line-height: 1.65;
+}
+
+/* Top row: Facebook link | feed embed placeholder (equal height, shared baseline) */
+.social__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.social__top-link {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  border-right: 1px solid var(--line);
+}
+
+.social__platforms {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: none;
+  background: transparent;
+  flex: 1;
+  width: 100%;
+}
+
+.social__platforms--row {
+  grid-template-columns: 1fr;
+}
+
+.social__platforms--row .platform {
+  border-right: none;
+  min-height: 100%;
+  align-self: stretch;
+}
+.social__platforms--row .platform:not(:last-child) {
+  border-bottom: 1px solid var(--line);
+}
+.social__platforms--row .platform:last-child {
+  border-bottom: none;
+}
+
+.social__platforms--row .platform__handle {
+  text-transform: none;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+.social__embed-slot {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+}
+
+/* Facebook Page Plugin (iframe) */
+.social__page-plugin {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  min-width: 0;
+  margin: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* Width set by JS to match container — do not force width here or it breaks shrinking */
+.social__page-plugin iframe {
+  flex: 1;
+  min-width: 0;
+  min-height: 480px;
+  max-width: 100%;
+  display: block;
+}
+
+.platform {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 26px;
+  background: var(--paper);
+  transition: background 0.3s var(--ease-out);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.platform:nth-child(2n) { border-right: none; }
+.platform:nth-last-child(-n+2) { border-bottom: none; }
+.platform:hover { background: var(--azure-50); }
+
+.platform__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Full SVG files (`/images/*.svg`) — fill tile */
+.platform__icon .platform__brand-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.platform__icon--youtube {
+  border-color: var(--line-strong);
+  background: #fff;
+}
+.platform__icon--youtube .platform__brand-img {
+  width: 86%;
+  height: 86%;
+}
+
+.platform__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.platform__name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--cobalt-900);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.platform__handle {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.platform__count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 4px;
+}
+.platform__count strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--cobalt-900);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.platform__count span {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.platform__ext {
+  color: var(--ink-300);
+  transition: color 0.3s var(--ease-out);
+}
+.platform:hover .platform__ext { color: var(--cobalt-900); }
+
+.platform__hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  justify-self: end;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  /* Narrower gutters + slightly less vertical rhythm so the block doesn’t feel oversized */
+  .social__top-section .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .social__top-section.section {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .social__top {
+    grid-template-columns: 1fr;
+  }
+  .social__top-link {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .social__platforms { grid-template-columns: 1fr; }
+  .platform {
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    padding: 14px 12px;
+    border-right: none !important;
+    border-bottom: 1px solid var(--line);
+  }
+  .platform:last-child { border-bottom: none; }
+  .platform__ext { display: none; }
+  .social__top-section .platform__name {
+    font-size: clamp(18px, 4.8vw, 22px);
+  }
+
+  .social__page-plugin {
+    margin: 10px 12px 14px;
+    min-height: 300px;
+  }
+
+  /* Taller timeline on small screens */
+  .social__page-plugin iframe {
+    min-height: 560px;
+    height: 560px !important;
+    max-width: 100%;
+  }
+}
+
+/* ----- Feed intro ----- */
+.social__feed-head {
+  margin-bottom: clamp(36px, 5vw, 52px);
+  max-width: 42rem;
+}
+.social__feed-title {
+  margin-top: 10px;
+}
+
+/* ----- Feed: TikTok column + 2×2 quad (equal cells) ----- */
+.feed {
+  width: 100%;
+  min-width: 0;
+}
+
+.feed--tiktok-beside-quad {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.feed__tiktok-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed__tiktok-column > .feed__post {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.feed__quad {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  min-height: 0;
+  min-width: 0;
+  align-self: stretch;
+  height: 100%;
+}
+
+/* Quad fills row when no TikTok (data edge case) */
+.feed--tiktok-beside-quad:not(:has(.feed__tiktok-column)) .feed__quad {
+  grid-column: 1 / -1;
+}
+
+.feed__post {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  overflow: visible;
+  min-height: 0;
+  min-width: 0;
+  max-width: 100%;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.feed__post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px -18px rgba(10, 31, 77, 0.28);
+  border-color: var(--cobalt-300);
+}
+.feed__post--wide { grid-column: span 2; }
+.feed__post--tall { grid-row: span 2; }
+
+.feed__post--quad {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.feed__post--airport {
+  min-height: 0;
+}
+
+.feed__media {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--paper-tint);
+}
+.feed__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease-out);
+  filter: saturate(0.94);
+}
+.feed__post:hover .feed__media img { transform: scale(1.06); }
+
+.feed__post--tiktok-slot {
+  min-height: 0;
+}
+.feed__post--tiktok-slot .feed__body {
+  gap: 18px;
+  padding-top: 6px;
+}
+.feed__post--tiktok-slot .feed__meta--actions {
+  margin-top: 10px;
+}
+.feed__post--tiktok-slot .feed__caption {
+  font-size: clamp(14px, 1.1vw, 16px);
+}
+
+.feed__media--tiktok {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 0;
+  position: relative;
+  max-height: min(85vh, 720px);
+  overflow: hidden auto;
+  background: var(--paper-tint);
+}
+.feed__media--tiktok .tiktok-official-embed {
+  width: 100%;
+  min-width: 0;
+}
+.feed__media--tiktok blockquote.tiktok-embed {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: 100%;
+}
+/* Player iframe injected by TikTok embed.js */
+.feed__media--tiktok .tiktok-official-embed iframe,
+.feed__media--tiktok blockquote iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 0;
+  border-radius: 2px;
+}
+
+/* Thumbnail + link to the real Facebook post (add files under public/images/social/) */
+a.feed__media--photo {
+  display: block;
+  flex: 1;
+  min-height: 200px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.feed__post--quad a.feed__media--photo {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.feed__post--wide a.feed__media--photo {
+  min-height: 240px;
+}
+.feed__post--tall a.feed__media--photo {
+  min-height: 360px;
+}
+
+.feed__platform,
+.feed__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--cobalt-900);
+  padding: 5px 9px;
+  border-radius: 0;
+  border: 1px solid var(--cobalt-300);
+  backdrop-filter: blur(6px);
+}
+.feed__badge--airport {
+  border-color: var(--azure-200);
+  background: rgba(250, 252, 255, 0.96);
+}
+.feed__badge--gathering {
+  /* Match airport badge treatment */
+  border-color: var(--azure-200);
+  background: rgba(250, 252, 255, 0.96);
+}
+.feed__badge--proud {
+  border-color: var(--azure-200);
+  background: rgba(250, 252, 255, 0.96);
+}
+
+/* Airport carousel — square frame, no outbound link */
+.feed__media--carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.feed__post--airport .feed__media--carousel,
+.feed__post--gathering-carousel .feed__media--carousel,
+.feed__post--proud-carousel .feed__media--carousel {
+  flex: 1 1 auto;
+}
+.feed__carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--paper-tint);
+}
+/* Wide-layout airport (legacy): capped square */
+.feed__post--airport:not(.feed__post--quad) .feed__carousel-viewport {
+  width: min(100%, min(34vw, 300px));
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+/* 2×2 quad: square uses available media area */
+.feed__quad .feed__post--airport .feed__carousel-viewport,
+.feed__quad .feed__post--gathering-carousel .feed__carousel-viewport,
+.feed__quad .feed__post--proud-carousel .feed__carousel-viewport {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
+  max-height: 100%;
+}
+
+.feed__carousel-track {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+.feed__carousel-slide {
+  flex: 0 0 calc(100% / var(--carousel-n, 4));
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.feed__carousel-slide img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.1s var(--ease-out);
+  filter: saturate(0.94);
+}
+.feed__post:hover .feed__carousel-slide img {
+  transform: scale(1.05);
+}
+.feed__carousel-controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  pointer-events: none;
+}
+.feed__carousel-btn {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--cobalt-300);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--cobalt-900);
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+  backdrop-filter: blur(6px);
+}
+.feed__post--airport .feed__carousel-btn,
+.feed__post--gathering-carousel .feed__carousel-btn,
+.feed__post--proud-carousel .feed__carousel-btn {
+  width: 30px;
+  height: 30px;
+}
+.feed__carousel-btn:hover {
+  background: var(--cobalt-900);
+  border-color: var(--cobalt-900);
+  color: #fff;
+}
+.feed__carousel-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: -6px 0 0;
+  min-height: 1.4em;
+}
+/* Airport + Gathering + Proud carousels — same title / body / subtitle treatment */
+.feed__post--airport .feed__caption,
+.feed__post--gathering-carousel .feed__caption,
+.feed__post--proud-carousel .feed__caption {
+  -webkit-line-clamp: unset;
+  display: block;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.35;
+}
+.feed__post--airport .feed__body,
+.feed__post--gathering-carousel .feed__body,
+.feed__post--proud-carousel .feed__body {
+  flex-shrink: 0;
+  padding: 6px 12px 10px;
+  gap: 4px;
+}
+.feed__post--airport .feed__carousel-sub,
+.feed__post--gathering-carousel .feed__carousel-sub,
+.feed__post--proud-carousel .feed__carousel-sub {
+  margin-top: -2px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.feed__post--quad .feed__body {
+  padding: 10px 12px 12px;
+  gap: 10px;
+}
+.feed__post--quad .feed__caption {
+  font-size: clamp(14px, 1.35vw, 16px);
+  -webkit-line-clamp: 2;
+}
+/* Quad carousel tiles: override generic quad caption/body so both match airport */
+.feed__post--quad.feed__post--airport .feed__caption,
+.feed__post--quad.feed__post--gathering-carousel .feed__caption,
+.feed__post--quad.feed__post--proud-carousel .feed__caption {
+  -webkit-line-clamp: unset;
+  display: block;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.35;
+}
+.feed__post--quad.feed__post--airport .feed__body,
+.feed__post--quad.feed__post--gathering-carousel .feed__body,
+.feed__post--quad.feed__post--proud-carousel .feed__body {
+  padding: 6px 12px 10px;
+  gap: 4px;
+}
+
+.feed__body {
+  flex-shrink: 0;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.feed__caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--cobalt-900);
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feed__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.06em;
+}
+.feed__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.feed__date {
+  margin-left: auto;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.feed__meta--actions {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feed__post-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cobalt-600);
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+.feed__post-link:hover {
+  color: var(--cobalt-900);
+  border-color: var(--cobalt-300);
+}
+
+@media (max-width: 920px) {
+  .feed--tiktok-beside-quad {
+    grid-template-columns: 1fr;
+  }
+  .feed__quad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, auto));
+    min-height: 0;
+  }
+  .feed__post--tall { grid-row: auto; }
+}
+@media (max-width: 560px) {
+  .feed__quad {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  a.feed__media--photo {
+    aspect-ratio: 4 / 3;
+  }
+  .feed__post--quad a.feed__media--photo {
+    min-height: 180px;
+  }
+  .feed__media--tiktok {
+    max-height: min(78vh, 560px);
+  }
+  .feed__quad .feed__post--airport .feed__carousel-viewport,
+  .feed__quad .feed__post--gathering-carousel .feed__carousel-viewport,
+  .feed__quad .feed__post--proud-carousel .feed__carousel-viewport {
+    width: min(100%, min(88vw, 320px));
+    margin-inline: auto;
+  }
+}
+
+/* ----- CTA ----- */
+.social__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+.social__cta h3 {
+  font-size: clamp(38px, 5vw, 64px);
+  color: var(--cobalt-900);
+  letter-spacing: -0.03em;
+}
+.social__cta p {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+.social__cta strong {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--cobalt-600);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.social__cta p a {
+  color: var(--cobalt-600);
+  text-underline-offset: 3px;
+}
+.social__cta p a:hover {
+  color: var(--cobalt-900);
+}

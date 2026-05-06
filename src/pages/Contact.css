@@ -1,0 +1,168 @@
+.contact-page--my .ph__title,
+.contact-page--my .ph__lede {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+/* Match Services page Myanmar hero title scale; full row width so one line fits */
+.contact-page--my .ph__title {
+  letter-spacing: 0;
+  line-height: 1.12;
+  font-size: clamp(26px, 3.4vw, 42px);
+  max-width: none;
+  width: 100%;
+}
+
+.contact-page--my .ph__title em {
+  font-family: inherit;
+}
+
+.contact-page--my .contact__office-address {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+  line-height: 1.55;
+}
+
+.contact__head {
+  margin-bottom: 34px;
+}
+
+.contact__title {
+  font-size: clamp(30px, 4vw, 46px);
+  margin-top: 16px;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact__form {
+  display: block;
+  position: relative;
+}
+
+.contact__consult-card {
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(243, 247, 253, 0.85));
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__consult-title {
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--cobalt-900);
+  font-weight: 400;
+}
+
+.contact__consult-title strong {
+  font-weight: 700;
+}
+
+.contact__consult-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.contact__consult-lede {
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-600);
+}
+
+.contact__submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.contact__consult-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact__meta {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.06em;
+}
+
+/* ----- Aside ----- */
+.contact__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 100px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.contact__block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.contact__block:last-child { border-bottom: 1px solid var(--line-strong); }
+
+.contact__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cobalt-900);
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+}
+.contact__line svg {
+  margin-top: 3px;
+  color: var(--cobalt-600);
+  flex-shrink: 0;
+}
+
+.contact__block--call p {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 350;
+  color: var(--ink-500);
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144;
+}
+
+@media (max-width: 920px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .contact__aside { position: static; }
+}
+
+@media (max-width: 560px) {
+  .contact__consult-card {
+    padding: 20px;
+  }
+}
