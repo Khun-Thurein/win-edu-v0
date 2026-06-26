@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Programs from './pages/Programs';
 import Contact from './pages/Contact';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -48,7 +47,6 @@ export default function App() {
               </LazyPage>
             }
           />
-          <Route path="/programs" element={<Programs />} />
           <Route
             path="/success-story"
             element={

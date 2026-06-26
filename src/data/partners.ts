@@ -35,22 +35,13 @@ export type SchoolPartner = {
   programs?: PartnerPrograms;
 };
 
-export const PROGRAM_TAB_ORDER: ProgramCategoryKey[] = ['pathway', 'undergraduate', 'postgraduate'];
-
-export const PROGRAM_TAB_LABELS: Record<ProgramCategoryKey, string> = {
-  pathway: 'Pathway Programs',
-  undergraduate: 'Undergraduate Courses',
-  postgraduate: 'Postgraduate Courses',
-};
-
 const partners: SchoolPartner[] = [
-  /* —— Demo: fuller record for layout testing —— */
   {
     slug: 'alexander-academy',
     name: 'Alexander Academy',
     meta: 'Canada',
     logo: '/partners/alexander-academy.png',
-    phone: '+1 (604) 555-0100',
+    phone: '+1 604-687-8832',
     website: 'https://alexanderacademy.ca',
     address: {
       street: '601 West Chestnut Street',
