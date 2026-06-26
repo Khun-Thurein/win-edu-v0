@@ -1,16 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-
-export type Language = 'en' | 'my';
-
-type LanguageContextValue = {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  toggleLanguage: () => void;
-};
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { LanguageContext, type Language } from './language';
 
 const STORAGE_KEY = 'win-language';
-
-const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function getInitialLanguage(): Language {
   if (typeof window === 'undefined') return 'en';
@@ -25,7 +16,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, language);
   }, [language]);
 
-  const value = useMemo<LanguageContextValue>(
+  const value = useMemo(
     () => ({
       language,
       setLanguage,
@@ -35,17 +26,4 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
-}
-
-export function useLanguage() {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider');
-  }
-  return context;
-}
-
-export function pickByLanguage(language: Language, english: string, myanmar?: string) {
-  if (language === 'my' && myanmar?.trim()) return myanmar;
-  return english;
 }

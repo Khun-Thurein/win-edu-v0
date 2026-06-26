@@ -7,7 +7,7 @@ interface CountUpNumberProps {
 
 export default function CountUpNumber({ value, durationMs = 1600 }: CountUpNumberProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const [display, setDisplay] = useState(value);
+  const [animatedDisplay, setAnimatedDisplay] = useState('');
   const [hasStarted, setHasStarted] = useState(false);
 
   const parsed = useMemo(() => {
@@ -37,20 +37,16 @@ export default function CountUpNumber({ value, durationMs = 1600 }: CountUpNumbe
   }, [parsed, hasStarted]);
 
   useEffect(() => {
-    if (!parsed || !hasStarted) {
-      setDisplay(value);
-      return;
-    }
+    if (!parsed || !hasStarted) return;
 
     const start = performance.now();
     let rafId = 0;
 
     const animate = (now: number) => {
       const t = Math.min((now - start) / durationMs, 1);
-      // Ease-out cubic: visibly slows near the final value.
       const eased = 1 - Math.pow(1 - t, 3);
       const current = Math.round(parsed.target * eased);
-      setDisplay(`${current}${parsed.suffix}`);
+      setAnimatedDisplay(`${current}${parsed.suffix}`);
 
       if (t < 1) {
         rafId = requestAnimationFrame(animate);
@@ -59,7 +55,13 @@ export default function CountUpNumber({ value, durationMs = 1600 }: CountUpNumbe
 
     rafId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId);
-  }, [parsed, hasStarted, value, durationMs]);
+  }, [parsed, hasStarted, durationMs]);
+
+  if (!parsed) {
+    return <span ref={ref}>{value}</span>;
+  }
+
+  const display = hasStarted ? (animatedDisplay || `0${parsed.suffix}`) : value;
 
   return <span ref={ref}>{display}</span>;
 }

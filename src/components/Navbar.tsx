@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import LanguageFlagSwitch from './LanguageFlagSwitch';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import './Navbar.css';
 
 const NAV_ITEMS = [

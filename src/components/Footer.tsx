@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '../context/language';
 import { OFFICE_ADDRESS_EN, OFFICE_ADDRESS_MY } from '../data/officeAddress';
 import { FacebookIcon } from './SocialIcons';
 import './Footer.css';

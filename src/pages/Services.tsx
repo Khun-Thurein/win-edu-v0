@@ -7,7 +7,7 @@ import PageHeader from '../components/PageHeader';
 import FlagTicker from '../components/FlagTicker';
 import PartnerDetailPanel from '../components/PartnerDetailPanel';
 import { PARTNERS_LIST, type SchoolPartner } from '../data/partners';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import iconStudentConsultation from '../assets/icon-student-male-skin-type-1.png';
 import iconSvcUniversity from '../assets/icon-svc-university.png';
 import iconSvcVisa from '../assets/icon-svc-visa.png';

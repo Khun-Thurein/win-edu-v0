@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import { OFFICE_ADDRESS_EN, OFFICE_ADDRESS_MY } from '../data/officeAddress';
 import consultationPhoto from '../assets/contact-consultation.jpg';
 import './Contact.css';

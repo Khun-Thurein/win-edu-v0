@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from 'react';
 import heroGraduates from '../assets/hero-graduates.png';
 import heroTulips from '../assets/hero-student-life-tulips.png';
 import heroWalk from '../assets/hero-student-life-walk.png';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import './Hero.css';
 
 const HERO_LEDE_EN =

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import './FieldNotesLoop.css';
@@ -69,7 +69,7 @@ export default function FieldNotesLoop({ slides }: FieldNotesLoopProps) {
 
   const duplicatedSlides = useMemo(() => [...slides, ...slides], [slides]);
 
-  const remeasure = () => {
+  const remeasure = useCallback(() => {
     const track = trackRef.current;
     if (!track || slides.length === 0) return;
 
@@ -91,7 +91,43 @@ export default function FieldNotesLoop({ slides }: FieldNotesLoopProps) {
     while (x > 0.5) x -= firstSetWidth;
     gsap.set(track, { x });
     xRef.current = x;
-  };
+  }, [slides.length]);
+
+  const moveByOne = useCallback((direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track || slides.length === 0 || animatingRef.current) return;
+
+    const { firstSetWidth, step } = metricsRef.current;
+    if (firstSetWidth <= 0 || step <= 0) {
+      remeasure();
+      return;
+    }
+
+    let from = xRef.current;
+
+    if (direction === -1 && from > -step * 0.5) {
+      from -= firstSetWidth;
+      gsap.set(track, { x: from });
+      xRef.current = from;
+    }
+
+    const to = from - direction * step;
+
+    animatingRef.current = true;
+    gsap.to(track, {
+      x: to,
+      duration: 0.48,
+      ease: 'power2.out',
+      onComplete: () => {
+        let x = to;
+        while (x <= -firstSetWidth - 0.5) x += firstSetWidth;
+        while (x > 0.5) x -= firstSetWidth;
+        gsap.set(track, { x });
+        xRef.current = x;
+        animatingRef.current = false;
+      },
+    });
+  }, [slides.length, remeasure]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -111,7 +147,7 @@ export default function FieldNotesLoop({ slides }: FieldNotesLoopProps) {
       window.cancelAnimationFrame(id);
       gsap.killTweensOf(track);
     };
-  }, [slides]);
+  }, [slides, remeasure]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -142,44 +178,7 @@ export default function FieldNotesLoop({ slides }: FieldNotesLoopProps) {
       viewport.removeEventListener('touchstart', handleTouchStart);
       viewport.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [slides.length]);
-
-  const moveByOne = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track || slides.length === 0 || animatingRef.current) return;
-
-    const { firstSetWidth, step } = metricsRef.current;
-    if (firstSetWidth <= 0 || step <= 0) {
-      remeasure();
-      return;
-    }
-
-    let from = xRef.current;
-
-    // Previous from the start of the first set: jump to equivalent position in the duplicate strip (no visible change), then slide forward one step.
-    if (direction === -1 && from > -step * 0.5) {
-      from -= firstSetWidth;
-      gsap.set(track, { x: from });
-      xRef.current = from;
-    }
-
-    const to = from - direction * step;
-
-    animatingRef.current = true;
-    gsap.to(track, {
-      x: to,
-      duration: 0.48,
-      ease: 'power2.out',
-      onComplete: () => {
-        let x = to;
-        while (x <= -firstSetWidth - 0.5) x += firstSetWidth;
-        while (x > 0.5) x -= firstSetWidth;
-        gsap.set(track, { x });
-        xRef.current = x;
-        animatingRef.current = false;
-      },
-    });
-  };
+  }, [slides.length, moveByOne]);
 
   return (
     <section className="field-loop" aria-label="Carousel">

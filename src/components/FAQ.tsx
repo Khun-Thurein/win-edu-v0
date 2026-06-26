@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import './FAQ.css';
 
 export interface FAQItem {

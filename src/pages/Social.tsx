@@ -9,7 +9,7 @@ import {
   SOCIAL_FEED_POSTS,
   type SocialFeedPost,
 } from '../data/socialFeed';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import './Social.css';
 
 const SOCIAL_HEADER_TITLE_MY = 'WIN Education ရဲ့ Social Media မှ update များ';

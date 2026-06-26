@@ -1,15 +1,16 @@
+import { lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Services from './pages/Services';
-import SchoolPartnerDetail from './pages/SchoolPartnerDetail';
 import Programs from './pages/Programs';
-import SuccessStory from './pages/SuccessStory';
 import Contact from './pages/Contact';
-import Social from './pages/Social';
 import { LanguageProvider } from './context/LanguageContext';
+
+const Services = lazy(() => import('./pages/Services'));
+const SchoolPartnerDetail = lazy(() => import('./pages/SchoolPartnerDetail'));
+const SuccessStory = lazy(() => import('./pages/SuccessStory'));
+const Social = lazy(() => import('./pages/Social'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,6 +18,10 @@ function ScrollToTop() {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, [pathname]);
   return null;
+}
+
+function LazyPage({ children }: { children: ReactNode }) {
+  return <Suspense fallback={null}>{children}</Suspense>;
 }
 
 export default function App() {
@@ -27,12 +32,40 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services/partners/:slug" element={<SchoolPartnerDetail />} />
-          <Route path="/services" element={<Services />} />
+          <Route
+            path="/services/partners/:slug"
+            element={
+              <LazyPage>
+                <SchoolPartnerDetail />
+              </LazyPage>
+            }
+          />
+          <Route
+            path="/services"
+            element={
+              <LazyPage>
+                <Services />
+              </LazyPage>
+            }
+          />
           <Route path="/programs" element={<Programs />} />
-          <Route path="/success-story" element={<SuccessStory />} />
+          <Route
+            path="/success-story"
+            element={
+              <LazyPage>
+                <SuccessStory />
+              </LazyPage>
+            }
+          />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/social" element={<Social />} />
+          <Route
+            path="/social"
+            element={
+              <LazyPage>
+                <Social />
+              </LazyPage>
+            }
+          />
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />

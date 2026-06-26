@@ -9,7 +9,7 @@ import CountUpNumber from '../components/CountUpNumber';
 import { HOME_METRIC_CARDS } from '../data/successMetrics';
 import { FIELD_NOTES_HOME_SLIDES } from '../data/fieldNotesHomeSlides';
 import { WHO_WE_ARE_SLIDES } from '../data/whoWeAreSlides';
-import { pickByLanguage, useLanguage } from '../context/LanguageContext';
+import { pickByLanguage, useLanguage } from '../context/language';
 import './Home.css';
 
 const WHO_WE_ARE_BODY_EN =
