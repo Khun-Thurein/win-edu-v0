@@ -13,6 +13,15 @@ dist-ssr
 *.local
 .env
 .env.*
+!.env.example
+
+# Cloudflare Wrangler
+.wrangler/
+.dev.vars
+
+# Build / test artifacts
+coverage/
+*.tsbuildinfo
 
 # Editor / tooling
 .cursor
@@ -20,6 +29,7 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
