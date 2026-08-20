@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.win-international.ca/sitemap.xml
+Sitemap: https://wineducationyangon.com/sitemap.xml
