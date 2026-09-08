@@ -67,6 +67,7 @@ export default function Footer() {
 
         <div className="footer__bot">
           <span>© {new Date().getFullYear()} WIN International Education</span>
+          <Link to="/privacy" className="footer__legal-link">Privacy Policy</Link>
           <span className="footer__license">
             Icons by{' '}
             <a href="https://icons8.com" target="_blank" rel="noreferrer">

@@ -2,8 +2,10 @@ import { lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CookieNotice from './components/CookieNotice';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
 import { LanguageProvider } from './context/LanguageContext';
 
 const Services = lazy(() => import('./pages/Services'));
@@ -56,6 +58,7 @@ export default function App() {
             }
           />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route
             path="/social"
             element={
@@ -67,6 +70,7 @@ export default function App() {
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
+        <CookieNotice />
       </BrowserRouter>
     </LanguageProvider>
   );
