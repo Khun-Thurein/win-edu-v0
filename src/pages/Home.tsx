@@ -78,12 +78,20 @@ export default function Home() {
                 {pickByLanguage(language, WHO_WE_ARE_BODY_EN, WHO_WE_ARE_BODY_MY)}
               </p>
               <p className="quote__attribution">WIN</p>
-              <Link
-                to="/contact"
-                className={`btn btn-primary quote__cta ${language === 'my' ? 'quote__cta--my' : ''}`}
-              >
-                {pickByLanguage(language, WHO_WE_ARE_CTA_EN, WHO_WE_ARE_CTA_MY)}
-              </Link>
+              <div className="quote__actions">
+                <Link
+                  to="/about"
+                  className={`btn btn-ghost quote__cta ${language === 'my' ? 'quote__cta--my' : ''}`}
+                >
+                  {pickByLanguage(language, 'About Us', 'ကျွန်ုပ်တို့အကြောင်း')}
+                </Link>
+                <Link
+                  to="/contact"
+                  className={`btn btn-primary quote__cta ${language === 'my' ? 'quote__cta--my' : ''}`}
+                >
+                  {pickByLanguage(language, WHO_WE_ARE_CTA_EN, WHO_WE_ARE_CTA_MY)}
+                </Link>
+              </div>
             </div>
             <div className="quote__media">
               <WhoWeAreCarousel slides={WHO_WE_ARE_SLIDES} label="Recognition and awards" />

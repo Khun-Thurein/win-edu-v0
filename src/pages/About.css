@@ -1,0 +1,25 @@
+.about__approach {
+  margin-top: 12px;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.about-page--my .ph__title,
+.about-page--my .ph__lede,
+.about-page--my .quote__title,
+.about-page--my .quote__body--my {
+  font-family: 'Noto Sans Myanmar', var(--sans);
+}
+
+.about-page--my .ph__title {
+  letter-spacing: 0;
+  line-height: 1.12;
+  font-size: clamp(26px, 3.4vw, 42px);
+  max-width: none;
+  width: 100%;
+}

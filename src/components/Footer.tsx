@@ -38,6 +38,7 @@ export default function Footer() {
           <div className="footer__col">
             <div className="eyebrow">Explore</div>
             <Link to="/">Home</Link>
+            <Link to="/about">About Us</Link>
             <Link to="/services">Services</Link>
             <Link to="/success-story">Success Story</Link>
             <Link to="/contact">Contact</Link>

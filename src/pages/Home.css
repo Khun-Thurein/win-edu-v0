@@ -62,6 +62,12 @@
   line-height: 1.65;
 }
 
+.quote__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .quote__cta--my {
   font-family: 'Noto Sans Myanmar', var(--sans);
 }

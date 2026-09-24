@@ -8,6 +8,7 @@ import './Navbar.css';
 
 const NAV_ITEMS = [
   { to: '/', en: 'Home', my: '' },
+  { to: '/about', en: 'About Us', my: '' },
   { to: '/services', en: 'Services', my: '' },
   { to: '/success-story', en: 'Success Story', my: '' },
   { to: '/contact', en: 'Contact', my: '' },
